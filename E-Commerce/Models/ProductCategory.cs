@@ -8,7 +8,7 @@ namespace E_Commerce.Models
 {
     public class ProductCategory
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(200)]
