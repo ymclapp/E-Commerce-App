@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +34,7 @@ namespace E_Commerce.Controllers
             }
 
             var productCategory = await _context.ProductCategories
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (productCategory == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace E_Commerce.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,Category")] ProductCategory productCategory)
         {
-            if (id != productCategory.id)
+            if (id != productCategory.Id)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace E_Commerce.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductCategoryExists(productCategory.id))
+                    if (!ProductCategoryExists(productCategory.Id))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace E_Commerce.Controllers
             }
 
             var productCategory = await _context.ProductCategories
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (productCategory == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace E_Commerce.Controllers
 
         private bool ProductCategoryExists(int id)
         {
-            return _context.ProductCategories.Any(e => e.id == id);
+            return _context.ProductCategories.Any(e => e.Id == id);
         }
     }
 }
