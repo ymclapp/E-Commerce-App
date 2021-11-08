@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,9 +20,11 @@ namespace E_Commerce.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Home!!");
             return View();
         }
 
+        [HttpGet("PrivacyPolicy")]
         public IActionResult Privacy()
         {
             return View();
