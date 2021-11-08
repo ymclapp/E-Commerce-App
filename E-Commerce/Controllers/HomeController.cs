@@ -6,22 +6,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using E_Commerce.Models;
+using E_Commerce.Services;
 
 namespace E_Commerce.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProductCategoryRepository productCategoryRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductCategoryRepository productCategoryRepository, ILogger<HomeController> logger)
         {
+            this.productCategoryRepository = productCategoryRepository;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             _logger.LogInformation("Home!!");
-            return View();
+
+            List<ProductCategory> productCategories = await productCategoryRepository.GetAll();
+            return View(productCategories);
         }
 
         [HttpGet("PrivacyPolicy")]
