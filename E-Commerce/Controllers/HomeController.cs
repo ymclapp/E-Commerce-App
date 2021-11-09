@@ -13,11 +13,13 @@ namespace E_Commerce.Controllers
     public class HomeController : Controller
     {
         private readonly IProductCategoryRepository productCategoryRepository;
+        private readonly IProductRepository productRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IProductCategoryRepository productCategoryRepository, ILogger<HomeController> logger)
+        public HomeController(IProductCategoryRepository productCategoryRepository, IProductRepository productRepository, ILogger<HomeController> logger)
         {
             this.productCategoryRepository = productCategoryRepository;
+            this.productRepository = productRepository;
             _logger = logger;
         }
 

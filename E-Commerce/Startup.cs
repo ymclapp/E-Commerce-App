@@ -31,6 +31,7 @@ namespace E_Commerce
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IProductCategoryRepository, DatabaseProductCategoryRepository>();
+            services.AddScoped<IProductRepository, DatabaseProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
