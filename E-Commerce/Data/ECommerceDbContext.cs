@@ -1,4 +1,4 @@
-﻿using E_Commerce.Models;
+using E_Commerce.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace E_Commerce.Data
         {
         }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<E_Commerce.Models.Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
+        //public DbSet<AdminIndexViewModel> AdminIndexViewModels { get; set; }
     }
 }
