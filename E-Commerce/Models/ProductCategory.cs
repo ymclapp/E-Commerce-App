@@ -10,6 +10,7 @@ namespace E_Commerce.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Categories")]
         [Required]
         public string Name { get; set; }
 
