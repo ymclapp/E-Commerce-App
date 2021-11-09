@@ -10,8 +10,12 @@ namespace E_Commerce.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Categories")]
         [Required]
-        [StringLength(200)]
-        public string Category { get; set; }
+        public string Name { get; set; }
+
+
+        //Reverse navigation property
+        public List<Product> Products { get; set; }
     }
 }

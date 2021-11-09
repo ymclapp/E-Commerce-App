@@ -34,6 +34,7 @@ namespace E_Commerce.Controllers
             }
 
             var productCategory = await _context.ProductCategories
+                .Include(pc => pc.Products)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (productCategory == null)
             {
@@ -54,7 +55,7 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Category")] ProductCategory productCategory)
+        public async Task<IActionResult> Create([Bind("Id,Name")] ProductCategory productCategory)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +87,7 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Category")] ProductCategory productCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ProductCategory productCategory)
         {
             if (id != productCategory.Id)
             {

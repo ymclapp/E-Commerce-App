@@ -11,7 +11,7 @@ namespace E_Commerce.Services
     public interface IProductCategoryRepository
     {
         Task<List<ProductCategory>> GetAll ( );
-
+        Task<List<ProductCategory>> GetNew (int count );
     }
     public class DatabaseProductCategoryRepository : IProductCategoryRepository
     {
@@ -29,6 +29,14 @@ namespace E_Commerce.Services
             //     new ProductCategory {Id = 45, Category = "Historical Romance" },
             // };
             return await _context.ProductCategories.ToListAsync();
+        }
+
+        public async Task<List<ProductCategory>> GetNew(int count)
+        {
+            return await _context.ProductCategories
+                .OrderByDescending(pc => pc.Id) //sort newest to oldest
+                .Take(count)
+                .ToListAsync();
         }
     }
 }

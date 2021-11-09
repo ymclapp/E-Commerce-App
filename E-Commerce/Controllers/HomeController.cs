@@ -28,6 +28,9 @@ namespace E_Commerce.Controllers
             _logger.LogInformation("Home!!");
 
             List<ProductCategory> productCategories = await productCategoryRepository.GetAll();
+
+            List<ProductCategory> newProductCategories = await productCategoryRepository.GetNew(5);
+
             return View(productCategories);
         }
 
