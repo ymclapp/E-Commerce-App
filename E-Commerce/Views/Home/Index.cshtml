@@ -14,9 +14,9 @@
             @* This is a comment in Razor!*@
             @*<a href = "/ProductCategories/Details/@productCategory.Id">*@
             @*But we should let ASP.NET figure out the route: *@
-            @*  <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@productCategory.Id">
-                                @productCategory.Category
-                            </a> *@
+            <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@productCategory.Id">
+                                @productCategory.Name
+                            </a>
                         </li>
                     }
             </ul>
