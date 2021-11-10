@@ -20,7 +20,7 @@ namespace E_Commerce.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
 
         // GET: Products
         public async Task<IActionResult> Index()
