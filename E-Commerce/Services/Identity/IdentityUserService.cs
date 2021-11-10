@@ -14,12 +14,14 @@ namespace E_Commerce.Services.Identity
 
     public class IdentityUserService : IUserService  //IdentityUserService in steps, but you can name whatever
     {
+        private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IHttpContextAccessor httpContextAccessor;
 
 
-        public IdentityUserService ( UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor )
+        public IdentityUserService ( SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor )
         {
+            this.signInManager = signInManager;
             this.userManager = userManager;
             this.httpContextAccessor = httpContextAccessor;
         }
@@ -30,6 +32,7 @@ namespace E_Commerce.Services.Identity
             if (!await userManager.CheckPasswordAsync(user, data.Password))
                 return null;
 
+            await signInManager.SignInAsync(user, true);
             return await CreateUserDtoAsync(user);
         }
 
@@ -45,7 +48,8 @@ namespace E_Commerce.Services.Identity
 
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, "Administrator");
+                //await userManager.AddToRoleAsync(user, "Administrator");
+                await signInManager.SignInAsync(user, true);
                 return await CreateUserDtoAsync(user);
             }
             foreach (var error in result.Errors)

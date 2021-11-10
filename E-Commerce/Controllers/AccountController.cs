@@ -17,6 +17,8 @@ namespace E_Commerce.Controllers
         {
             this.userService = userService;
         }
+
+        [Authorize]
         public IActionResult Index ( )
         {
             return View();

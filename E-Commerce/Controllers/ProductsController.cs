@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -125,6 +125,9 @@ namespace E_Commerce.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             if (id == null)
             {
                 return NotFound();
@@ -146,6 +149,9 @@ namespace E_Commerce.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             var product = await _context.Product.FindAsync(id);
             _context.Product.Remove(product);
             await _context.SaveChangesAsync();
