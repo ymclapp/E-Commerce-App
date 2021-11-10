@@ -31,7 +31,7 @@ namespace E_Commerce.Controllers
 
         //POST Account/Register
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync ( RegisterData data )
+        public async Task<ActionResult<UserDto>> RegisterAsync ( RegisterData data )
         {
 
             if(!ModelState.IsValid)
@@ -55,7 +55,7 @@ namespace E_Commerce.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Login ( LoginData data )
+        public async Task<ActionResult<UserDto>> Login ( LoginData data )
         {
             var user = await userService.Authenticate(data);
 

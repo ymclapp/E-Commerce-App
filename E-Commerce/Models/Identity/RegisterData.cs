@@ -20,4 +20,6 @@ namespace E_Commerce.Models.Identity
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+
 }
+
