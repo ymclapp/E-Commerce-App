@@ -1,5 +1,7 @@
 using E_Commerce.Models;
+using E_Commerce.Models.Identity;
 using E_Commerce.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace E_Commerce.Controllers
     {
         private readonly IDashboardRepository dashboard;
 
-       public AdminController(IDashboardRepository dashboard)
+
+        public AdminController(IDashboardRepository dashboard )
         {
             this.dashboard = dashboard;
         }
+
         public async Task<IActionResult> Index ( )
         {
             int prodCatCount = await dashboard.GetProductCategoryCount();
@@ -30,5 +34,7 @@ namespace E_Commerce.Controllers
             };
             return View(model);
         }
+
+
     }
 }
