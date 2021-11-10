@@ -20,6 +20,8 @@ namespace E_Commerce.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator")]
+
         // GET: Products
         public async Task<IActionResult> Index()
         {
@@ -47,8 +49,12 @@ namespace E_Commerce.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             ViewData["ProductCategoryId"] = new SelectList(_context.ProductCategories, "Id", "Name");
             return View();
         }
@@ -58,8 +64,12 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductCategoryId")] Product product)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             if (ModelState.IsValid)
             {
                 _context.Add(product);
@@ -71,8 +81,14 @@ namespace E_Commerce.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int? id)
         {
+
+            if (!User.IsInRole("Editor"))
+                return NotFound();
+
+
             if (id == null)
             {
                 return NotFound();
@@ -92,8 +108,13 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductCategoryId")] Product product)
         {
+
+            if (!User.IsInRole("Editor"))
+                return NotFound();
+
             if (id != product.Id)
             {
                 return NotFound();

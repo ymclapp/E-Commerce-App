@@ -18,6 +18,7 @@ namespace E_Commerce.Controllers
             this.userService = userService;
         }
 
+        [Authorize(Roles = "Site Owner")]
         [Authorize]
         public IActionResult Index ( )
         {

@@ -20,6 +20,7 @@ namespace E_Commerce.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: ProductCategories
         public async Task<IActionResult> Index()
         {
@@ -56,8 +57,12 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("Id,Name")] ProductCategory productCategory)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             if (ModelState.IsValid)
             {
                 _context.Add(productCategory);
@@ -68,8 +73,12 @@ namespace E_Commerce.Controllers
         }
 
         // GET: ProductCategories/Edit/5
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.IsInRole("Editor"))
+                return NotFound();
+
             if (id == null)
             {
                 return NotFound();
@@ -88,8 +97,13 @@ namespace E_Commerce.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ProductCategory productCategory)
         {
+            if (!User.IsInRole("Editor"))
+                return NotFound();
+
+
             if (id != productCategory.Id)
             {
                 return NotFound();
@@ -122,6 +136,9 @@ namespace E_Commerce.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             if (id == null)
             {
                 return NotFound();
@@ -143,6 +160,9 @@ namespace E_Commerce.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator"))
+                return NotFound();
+
             var productCategory = await _context.ProductCategories.FindAsync(id);
             _context.ProductCategories.Remove(productCategory);
             await _context.SaveChangesAsync();
