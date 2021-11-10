@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Data
 {
-    public class ECommerceDbContext : IdentityDbContext  //we used applicationuser before
+    public class ECommerceDbContext : IdentityDbContext  //we used IdentityUser before
     {
         public ECommerceDbContext(DbContextOptions options) : base(options)
         {
