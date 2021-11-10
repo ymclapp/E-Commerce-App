@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using E_Commerce.Models.Identity;
 using E_Commerce.Data;
 using E_Commerce.Services;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using E_Commerce.Services.Identity;
 
 namespace E_Commerce
 {
@@ -31,6 +33,8 @@ namespace E_Commerce
             services.AddDbContext<ECommerceDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            //Identity!!
             services
                 .AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -39,6 +43,8 @@ namespace E_Commerce
             .AddEntityFrameworkStores<ECommerceDbContext>();  //where are users stored?
 
             services.AddScoped<IUserService, IdentityUserService>();
+            //end of Identity
+
             services.AddScoped<IProductCategoryRepository, DatabaseProductCategoryRepository>();
             services.AddScoped<IProductRepository, DatabaseProductRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
@@ -62,6 +68,7 @@ namespace E_Commerce
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

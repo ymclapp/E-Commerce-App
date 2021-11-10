@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models.Identity
 {
-    public class LoginData
+    public class RegisterData
     {
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
         [Required]
         public string Username { get; set; }
 

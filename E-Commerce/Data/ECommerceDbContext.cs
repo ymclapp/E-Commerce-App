@@ -1,4 +1,5 @@
 using E_Commerce.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,5 +17,24 @@ namespace E_Commerce.Data
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Product { get; set; }
         //public DbSet<AdminIndexViewModel> AdminIndexViewModels { get; set; }
+
+        protected override void OnModelCreating ( ModelBuilder builder )
+        {
+            base.OnModelCreating(builder);
+            SeedRole(builder, "Administrator");
+            SeedRole(builder, "Editor");
+            SeedRole(builder, "Site Owner");
+        }
+        private void SeedRole(ModelBuilder builder, string roleName)
+        {
+            var role = new IdentityRole
+            {
+                Id = roleName,
+                Name = roleName,
+                NormalizedName = roleName.ToUpper(),
+                ConcurrencyStamp = Guid.Empty.ToString(),
+            };
+            builder.Entity<IdentityRole>().HasData(role);
+        }
     }
 }
