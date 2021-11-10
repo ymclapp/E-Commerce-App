@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce.Data;
 using E_Commerce.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_Commerce.Controllers
 {
@@ -123,6 +124,7 @@ namespace E_Commerce.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (!User.IsInRole("Administrator"))
@@ -147,6 +149,7 @@ namespace E_Commerce.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (!User.IsInRole("Administrator"))
