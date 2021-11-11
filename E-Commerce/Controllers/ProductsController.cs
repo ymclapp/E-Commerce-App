@@ -8,16 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using E_Commerce.Data;
 using E_Commerce.Models;
 using Microsoft.AspNetCore.Authorization;
+using E_Commerce.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace E_Commerce.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ECommerceDbContext _context;
+        private readonly IFileUploadService fileUploadService;
 
-        public ProductsController(ECommerceDbContext context)
+        public ProductsController(ECommerceDbContext context, IFileUploadService fileUploadService )
         {
             _context = context;
+            this.fileUploadService = fileUploadService;
         }
 
         //[Authorize(Roles = "Administrator")]
@@ -185,6 +189,14 @@ namespace E_Commerce.Controllers
         private bool ProductExists(int id)
         {
             return _context.Product.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProductImage(IFormFile productImage)
+        {
+            string url = await fileUploadService.Upload(productImage);
+            await fileUploadService.SetProductImage(Product, url);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

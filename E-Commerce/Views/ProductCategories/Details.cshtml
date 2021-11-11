@@ -58,6 +58,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].ProductCategory)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Products[0].ProductImage)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -92,3 +95,8 @@
         }
     </tbody>
 </table>
+@{ var productUrl = Product.FindFirst("ProductUrl"); }
+@if (productUrl != null)
+{
+<img src="@productUrl.Value" />
+}

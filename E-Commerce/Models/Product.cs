@@ -18,6 +18,7 @@ namespace E_Commerce.Models
         public int InventoryAmount { get; set; }
         public string Summary { get; set; }
         public string Condition { get; set; }
+        public string ProductImage { get; set; }
 
         //If you leave this out, it will probably figure out that you need one - automatically makes it required
         [Display(Name = "Product Category")]
