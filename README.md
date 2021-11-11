@@ -2,6 +2,7 @@
 Lab 26 - sprint 1 milestone 1 - starting the app
 Lab 27 - sprint 1 milestone 2 - adding the categories and products to view and details
 Lab 28 - sprint 1 milestone 3 - adding roles and identity
+Lab 29 - sprint 1 milestone 4 - blob storage
 
 
 ##   App Summary:
