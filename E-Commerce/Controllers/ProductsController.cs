@@ -195,7 +195,7 @@ namespace E_Commerce.Controllers
         public async Task<IActionResult> UploadProductImage(IFormFile productImage)
         {
             string url = await fileUploadService.Upload(productImage);
-            await fileUploadService.SetProductImage(Product.ProductImage, url);
+            await fileUploadService.SetProductImage(Product, url);
             return RedirectToAction(nameof(Index));
         }
     }
