@@ -43,7 +43,7 @@
             </div>
 
         </form>
-<form asp-action="UploadProductImage" method="post">
+<form asp-action="UploadProductImage" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <input type="file" name="productImage"/>
         <button type="submit">Upload Product Image</button>
