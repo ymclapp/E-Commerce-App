@@ -27,10 +27,6 @@ namespace E_Commerce.Services
             cloudBlobClient = storageAccount.CreateCloudBlobClient();
         }
 
-        public Task SetProductImage ( Product product, string url )
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<string> Upload(IFormFile productImage)
         {

@@ -95,8 +95,3 @@
         }
     </tbody>
 </table>
-@{ var productUrl = Product.FindFirst("ProductUrl"); }
-@if (productUrl != null)
-{
-<img src="@productUrl.Value" />
-}

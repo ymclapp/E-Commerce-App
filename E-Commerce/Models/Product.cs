@@ -19,6 +19,7 @@ namespace E_Commerce.Models
         public string Summary { get; set; }
         public string Condition { get; set; }
         public string ProductImage { get; set; }
+        public string ProductUrl { get; set; }
 
         //If you leave this out, it will probably figure out that you need one - automatically makes it required
         [Display(Name = "Product Category")]
