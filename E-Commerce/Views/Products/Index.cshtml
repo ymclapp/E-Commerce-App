@@ -30,6 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductCategory)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -55,16 +58,22 @@
                 @Html.DisplayFor(modelItem => item.ProductCategory.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td>
+            <td>
                 @if (User.IsInRole("Editor"))
                 {
                     <text>|</text>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                 }
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                @if(User.IsInRole("Administrator"))
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @if (User.IsInRole("Administrator"))
                 {
                     <text>|</text>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <text>|</text>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Update Product Image</a>
+
                 }
 
             </td>

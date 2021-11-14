@@ -4,5 +4,27 @@
 }
 
 <h1>Admin Dashboard</h1>
-<h2><a asp-controller="ProductCategories" asp-action="Index">Categories</a>(@Model.ProductCategoryCount)</h2>
-<h2><a asp-controller="Products" asp-action="Index">Products</a>(@Model.ProductCount)</h2>
+<h2>
+    <a asp-controller="ProductCategories" asp-action="Index">Categories</a>
+    (@Model.ProductCategoryCount)
+    
+</h2>
+
+
+@*<div>
+        <ul>
+            @foreach (var productCategory in Model.ProductCategoryName)
+            {
+    <li>
+        <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@Model.ProductCategoryId">
+            @Model.ProductCategoryName
+        </a>
+    </li>
+            }
+        </ul>
+    </div>*@
+<h2>
+    <a asp-controller="Products" asp-action="Index">Products</a>
+    (@Model.ProductCount)
+
+</h2>

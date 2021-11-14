@@ -16,7 +16,7 @@ namespace E_Commerce.Data
         }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Product { get; set; }
-        //public DbSet<AdminIndexViewModel> AdminIndexViewModels { get; set; }
+        //public DbSet<AdminIndexViewModel> AdminIndexViewModels { get; set; }//don't need since it gets its info from the product and productcategory models
 
         protected override void OnModelCreating ( ModelBuilder builder )
         {

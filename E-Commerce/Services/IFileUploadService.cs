@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Services
 {
-    interface IFileUploadService
+    public interface IFileUploadService
     {
         Task<string> Upload ( IFormFile file );
-        Task SetProductImage ( Product product, string url );
+
     }
 }

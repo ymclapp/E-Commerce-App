@@ -18,7 +18,7 @@ namespace E_Commerce.Controllers
         private readonly ECommerceDbContext _context;
         private readonly IFileUploadService fileUploadService;
 
-        public ProductsController(ECommerceDbContext context, IFileUploadService fileUploadService )
+        public ProductsController (ECommerceDbContext context, IFileUploadService fileUploadService )
         {
             _context = context;
             this.fileUploadService = fileUploadService;
@@ -69,13 +69,15 @@ namespace E_Commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductCategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductImage,ProductCategoryId")] Product product, IFormFile productImage)
         {
             if (!User.IsInRole("Administrator"))
                 return NotFound();
 
             if (ModelState.IsValid)
             {
+                string url = await fileUploadService.Upload(productImage);
+                product.ProductUrl = url;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -192,10 +194,14 @@ namespace E_Commerce.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadProductImage(IFormFile productImage)
+        public async Task<IActionResult> UploadProductImage(IFormFile productImage, Product product)
         {
             string url = await fileUploadService.Upload(productImage);
-            await fileUploadService.SetProductImage(Product, url);
+            //await fileUploadService.SetProductImage(productImage, url);// don't use fileUploadService
+
+                product.ProductUrl = url;
+            _context.Add(productImage);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

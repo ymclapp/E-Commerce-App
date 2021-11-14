@@ -11,6 +11,7 @@ namespace E_Commerce.Services
         Task<int> GetProductCategoryCount ( );
         Task<int> GetProductCount ( );
         Task<int> GetPendingOrderCount ( );
+        //Task<string> GetProductCategoryList ( );
     }
     public class DashboardRepository : IDashboardRepository
     {
@@ -25,6 +26,11 @@ namespace E_Commerce.Services
             //return await _context.ProductCategories.CountAsync();
             return 12; //need to update from hard coded
         }
+
+        //public Task<string> GetProductCategoryList ( )
+     //   {
+     //       var productCategories = IProductCategoryRepository.GetAll().ToList();
+    //    }
 
         public async Task<int> GetProductCount ( )
         {
