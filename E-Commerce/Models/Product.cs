@@ -20,7 +20,8 @@ namespace E_Commerce.Models
         public int Price { get; set; }
         public int InventoryAmount { get; set; }
         public string Summary { get; set; }
-        public Enum Condition { get; set; }
+        public string Condition { get; set; }
+        //public IEnumerable<SelectListItem> ProductCondition { get; set; }
 
         [Display(Name = "Book Cover")]
         public string ProductImage { get; set; }
@@ -35,13 +36,13 @@ namespace E_Commerce.Models
 
     }
 
-    public enum Condition
-    {
-        Select,
-        New,
-        LikeNew,
-        Good,
-        Ok,
-        Poor,
-    }
+    //public enum Condition
+   // {
+  //      Select,
+  //      New,
+  //      LikeNew,
+ //       Good,
+//        Ok,
+//        Poor,
+  //  }
 }
