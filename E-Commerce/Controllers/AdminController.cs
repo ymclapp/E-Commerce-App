@@ -13,6 +13,7 @@ namespace E_Commerce.Controllers
     public class AdminController : Controller
     {
         private readonly IDashboardRepository dashboard;
+        private readonly IProductCategoryRepository productCategoryRepository;
 
 
         public AdminController(IDashboardRepository dashboard )
@@ -26,17 +27,17 @@ namespace E_Commerce.Controllers
             int prodCount = await dashboard.GetProductCount();
             int orderCount = await dashboard.GetPendingOrderCount();
 
-            var prodCatName = await dashboard.IProductCategoryRepository.GetAll().ToList();
+            List<string> prodCatName = await productCategoryRepository.GetAll().ToList();
 
             var model = new AdminIndexViewModel
             {
                 ProductCategoryCount = prodCatCount,
                 ProductCount = prodCount,
                 OrderCount = orderCount,
-          //      ProductCategoryList = prodCatName,
+                ProductCategoryList = prodCatName,
             };
-            //return View(model);
-            return View("Index", prodCatName);
+            return View(model);
+            //return View("Index", prodCatName);
         }
 
 
