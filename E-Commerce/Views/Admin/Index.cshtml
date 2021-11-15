@@ -11,18 +11,18 @@
 </h2>
 
 
-@*<div>
+<div>
         <ul>
-            @foreach (var productCategory in Model.ProductCategoryName)
+            @foreach (var productCategory in Model.ProductCategory)
             {
     <li>
-        <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@Model.ProductCategoryId">
-            @Model.ProductCategoryName
+        <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@productCategory.Id">
+            @productCategory.Name
         </a>
     </li>
             }
         </ul>
-    </div>*@
+    </div>
 <h2>
     <a asp-controller="Products" asp-action="Index">Products</a>
     (@Model.ProductCount)
