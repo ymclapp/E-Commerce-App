@@ -42,8 +42,8 @@ namespace E_Commerce.Services.Identity
             {
                 Email = data.Email,
                 UserName = data.Username,
-                FirstName = data.FirstName,
-                LastName = data.LastName,
+               // FirstName = data.FirstName,
+              //  LastName = data.LastName,
                 //Password = data.Password,  //NOOOOOOOOOO
             };
             var result = await userManager.CreateAsync(user, data.Password);
@@ -72,8 +72,8 @@ namespace E_Commerce.Services.Identity
                 UserId = user.Id,
                 Email = user.Email,
                 Username = user.UserName,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                //FirstName = user.FirstName,
+               // LastName = user.LastName,
 
                 Roles = await userManager.GetRolesAsync(user),
             };
