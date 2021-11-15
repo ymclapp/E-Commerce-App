@@ -24,6 +24,7 @@ namespace E_Commerce.Data
             SeedRole(builder, "Administrator");
             SeedRole(builder, "Editor");
             SeedRole(builder, "Site Owner");
+            SeedRole(builder, "Customer");
         }
         private void SeedRole(ModelBuilder builder, string roleName)
         {
