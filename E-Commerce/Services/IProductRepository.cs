@@ -10,7 +10,7 @@ namespace E_Commerce.Services
 {
     public interface IProductRepository
     {
-       // Task SetProductImage ( string url );
+       Task SetProductImage ( string url );
         Task<List<Product>> GetAll ( );
     }
 
@@ -36,16 +36,16 @@ namespace E_Commerce.Services
         // };
         //     return await _context.Product.ToListAsync();
         //}
-        // public Task SetProductImage ( string url )
-        //   {
-        //       throw new NotImplementedException();
-        //  }
+         public Task SetProductImage ( string url )
+           {
+               throw new NotImplementedException();
+           }
 
         // public async Task SetProductImage ( string url )
-        // {
-        //      var product = await fileUploadService.product.productUrl
-        //      product.ProductUrl = url;
-        //      await fileUploadService.UpdateAsync(product);//need to fix for this to get the url
-        //  }
+      //   {
+      //      var product = await AzureFileUploadService.product.productUrl;
+       //       product.ProductUrl = url;
+      //        await AzureFileUploadService.UpdateAsync(product);//need to fix for this to get the url
+       //   }
     }
 }

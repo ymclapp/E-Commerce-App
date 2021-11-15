@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages
 {
-    public class IndexModel : PageModel
+    public class MyAccountModel : PageModel
     {
         public void OnGet()
         {
