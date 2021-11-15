@@ -22,7 +22,7 @@ namespace E_Commerce.Controllers
             this.productCategoryRepository = productCategoryRepository;
             this.productRepository = productRepository;
         }
-
+        //blah, blah, blah
         public async Task<IActionResult> Index ( )
         {
             int prodCatCount = await dashboard.GetProductCategoryCount();
