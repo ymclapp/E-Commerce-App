@@ -14,9 +14,11 @@ namespace E_Commerce.Models
         public int ProductCount { get; set; }
         public int OrderCount { get; set; }
 
-        [Display(Name = "Category Name")]
-        public IList<string> ProductCategoryList { get; set; }
-        public int ProductCategoryId { get; set; }
+        //[Display(Name = "Category Name")]
+        //public IList<string> ProductCategoryList { get; set; }
+        public List<ProductCategory> ProductCategory { get; set; }
+        public List<Product> Product { get; set; }
+        //public int ProductCategoryId { get; set; }
 
         //public ProductCategory ProductCategory { get; set; }
 

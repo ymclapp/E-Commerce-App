@@ -30,6 +30,7 @@ namespace E_Commerce
         public void ConfigureServices ( IServiceCollection services )
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddDbContext<ECommerceDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -74,6 +75,11 @@ namespace E_Commerce
 
             app.UseEndpoints(endpoints =>
             {
+                //First check to see if there is a Razor Page - order of endpoints matter
+                endpoints.MapRazorPages();
+                //Used this for APIs, which specify their own routes
+                endpoints.MapControllers();
+                //Default route "convention"
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
