@@ -26,6 +26,7 @@ namespace E_Commerce.Models
         [Display(Name = "Book Cover")]
         public string ProductImage { get; set; }
         public string ProductUrl { get; set; }
+        //public string ThumbnailUri { get; set; }
 
         //If you leave this out, it will probably figure out that you need one - automatically makes it required
         [Display(Name = "Product Category")]

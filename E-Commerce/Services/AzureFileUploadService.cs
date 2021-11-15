@@ -15,6 +15,7 @@ namespace E_Commerce.Services
     {
         public const string AccountName_Key = "AzureStorageAccountName";
         private readonly CloudBlobClient cloudBlobClient;
+        //public  Product product;
 
         public AzureFileUploadService(IConfiguration configuration)
         {

@@ -48,12 +48,14 @@
         </dd>
     </dl>
 </div>
+<div>
 
-@{ var productUrl = Model.ProductUrl; }
-@if (productUrl != null)
-{
-    <img src="@productUrl" />
-}
+    @{ var productUrl = Model.ProductUrl; }
+    @if (productUrl != null)
+    {
+        <img src="@productUrl" width="192" title="Book Cover" style="padding-right: 16px; padding-bottom: 16px" />
+    }
+</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

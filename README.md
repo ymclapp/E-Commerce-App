@@ -14,6 +14,10 @@ Now, with specific roles, you cannot conduct certain processes without the appro
 
 ##  How to use it:
 
-You will need Visual Studio and a browser to use.
+Go to:  https://e-commerce-app.azurewebsites.net/
 
-##  Additional information:
+What is the product you are selling?
+Structure/Database Schema for your store DB (not identity)
+Explanation of your DB Schema (mostly interested in your basket/order tables)
+What claims are you capturing? Where? Why? -
+What Policies are you enforcing? Why?
