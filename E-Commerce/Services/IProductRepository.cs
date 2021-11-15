@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce.Services
 {
@@ -22,9 +23,9 @@ namespace E_Commerce.Services
            _context = context;
        }
 
-        public Task<List<Product>> GetAll ( )
+        public async Task<List<Product>> GetAll ( )
         {
-            throw new NotImplementedException();
+            return await _context.Product.ToListAsync();
         }
 
         //  public async Task<List<Product>> GetAll ( )

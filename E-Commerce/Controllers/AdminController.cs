@@ -30,13 +30,14 @@ namespace E_Commerce.Controllers
             int orderCount = await dashboard.GetPendingOrderCount();
 
             List<ProductCategory> productCategories = await productCategoryRepository.GetAll();
-            //List<Product> products = await productRepository.GetAll();
+            List<Product> products = await productRepository.GetAll();
 
             var model = new AdminIndexViewModel
             {
                 ProductCategoryCount = prodCatCount,
                 ProductCategory = productCategories,
                 ProductCount = prodCount,
+                Product = products,
                 OrderCount = orderCount,
 
             };

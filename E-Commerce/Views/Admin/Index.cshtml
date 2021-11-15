@@ -28,3 +28,15 @@
     (@Model.ProductCount)
 
 </h2>
+<div>
+    <ul>
+        @foreach (var product in Model.Product)
+        {
+            <li>
+                <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@product.Id">
+                    @product.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
