@@ -14,14 +14,18 @@
         <th>Id</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Summary</th>
+        <th>Condition</th>
         <th>Action</th>
     </tr>
-    @foreach (var product in Model.Products)
+    @foreach (var product in ViewBag.products)
     {
         <tr align="center">
-            <td>@product.FakeId</td>
+            <td>@product.Id</td>
             <td>@product.Name</td>
             <td>$@product.Price</td>
+            <td>@product.Summary</td>
+            <td>@product.Condition</td>
             <td>
                 <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a>
             </td>
