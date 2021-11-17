@@ -6,39 +6,27 @@ namespace E_Commerce.Pages
 {
     public class ProductsModel
     {
-        private readonly List<Product> Products;
+        private readonly List<Product> Product;
 
         public ProductsModel()
         {
-            Products = new List<Product>()//need database info in here
+            Product = new List<Product>()//need database info in here
             {
                 new Product
                 {
-                    FakeId = "db001",
-                    Name = "Warrior Heir",
-                    Price = 20,
-                },
-                new Product
-                {
-                    FakeId = "db002",
-                    Name = "Wizard Heir",
-                    Price = 20,
-                },
-                new Product
-                {
-                    FakeId = "db003",
-                    Name = "Dragon Heir",
+                    Name = Product.Name,
+                    Summary = ProductSummary,
+                    Condition = "Good",
                     Price = 20,
                 }
-            };
         }
         public List<Product> findAll()
         {
-            return Products;
+            return Product;
         }
         public Product find(int id)
         {
-            return Products
+            return Product
                .Where(p => p.Id == id).FirstOrDefault();
         }
     }
