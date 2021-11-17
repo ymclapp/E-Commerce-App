@@ -53,7 +53,8 @@ namespace E_Commerce.Services.Identity
             if (result.Succeeded)
             {
                 //await userManager.AddToRoleAsync(user, "Administrator");
-                await emailService.SendEmail(data.Email,
+                await emailService.SendEmail(
+                    data.Email,
                     "Welcome!",
                     "Welcome!",
                     "<h1>Welcome</h1>"

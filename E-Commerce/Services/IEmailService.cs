@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace E_Commerce.Services
 {
@@ -23,17 +25,25 @@ namespace E_Commerce.Services
 
         public async Task SendEmail(string to, string subject, string plainTextContent, string bodyHtml)
             {
-                var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+                var apiKey = Configuration["SendGrid:ApiKey"]
+                ?? throw new InvalidOperationException("SendGrid:ApiKey not found!");
                 var client = new SendGridClient(apiKey);
-                var from = new EmailAddress("ymclapp@gmail.com");
+            var fromEmail = Configuration["Email:From"];  //have to set in user secrets (vs below hardcoding) for development - done
+            ?? throw new InvalidOperationException("Email:From not found!");
+            //var from = new EmailAddress("ymclapp@gmail.com");
             //var from = new EmailAddress("test@example.com", "Example User");
             //var subject = "Sending with SendGrid is Fun";
             //var to = new EmailAddress("test@example.com", "Example User");
                 var to = new EmailAddress(toEmail);
-                var plainTextContent = "and easy to do anywhere, even with C#";
+                //var plainTextContent = "and easy to do anywhere, even with C#";
                 var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
                 var response = await client.SendEmailAsync(msg);
+            if(!response.IsSucessStatusCode)
+            {
+                string responseBody = await response.Body.REadAsStringAsync();
+                //TODO:  Include more info to troubleshoot
+            }
             }
         }
     }
