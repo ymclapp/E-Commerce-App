@@ -33,6 +33,8 @@ namespace E_Commerce
             services.AddRazorPages();
             services.AddDbContext<ECommerceDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSession();
+            services.AddMvc();
 
 
             //Identity!!
@@ -67,6 +69,8 @@ namespace E_Commerce
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
+            //app.UseMvc();
 
             app.UseRouting();
 

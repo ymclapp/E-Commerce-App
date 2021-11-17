@@ -4,6 +4,7 @@ Lab 27 - sprint 1 milestone 2 - adding the categories and products to view and d
 Lab 28 - sprint 1 milestone 3 - adding roles and identity
 Lab 29 - sprint 1 milestone 4 - blob storage
 Lab 31 - sprint 2 milestone 1 - Consumer Site (The Storefront)
+Lab 32 - sprint 2 milestone 2 - Shopping Cart
 
 
 ##   App Summary:
