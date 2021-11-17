@@ -29,11 +29,11 @@ namespace E_Commerce.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            //var eCommerceDbContext = _context.Product.Include(p => //p.ProductCategory);
-            //return View(await eCommerceDbContext.ToListAsync());
+            var eCommerceDbContext = _context.Product.Include(p => p.ProductCategory);
+            return View(await eCommerceDbContext.ToListAsync());
 
-            ViewBag.products = _context.Product.ToList();
-            return View();
+            //ViewBag.products = _context.Product.ToList();
+            //return View();
         }
 
         // GET: Products/Details/5
