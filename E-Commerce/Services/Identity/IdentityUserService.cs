@@ -17,13 +17,15 @@ namespace E_Commerce.Services.Identity
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IEmailService emailService;
 
 
-        public IdentityUserService ( SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor )
+        public IdentityUserService ( SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IEmailService emailService )
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.httpContextAccessor = httpContextAccessor;
+            this.emailService = emailService;
         }
 
         public async Task<UserDto> Authenticate ( LoginData data )
@@ -51,6 +53,13 @@ namespace E_Commerce.Services.Identity
             if (result.Succeeded)
             {
                 //await userManager.AddToRoleAsync(user, "Administrator");
+                await emailService.SendEmail(
+                    data.Email,
+                    "Welcome!",
+                    "Welcome!",
+                    "<h1>Welcome</h1>"
+                    );
+
                 await signInManager.SignInAsync(user, true);
                 return await CreateUserDtoAsync(user);
             }
