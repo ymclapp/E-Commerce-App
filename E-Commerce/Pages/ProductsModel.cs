@@ -10,7 +10,7 @@ namespace E_Commerce.Pages
 
         public ProductsModel()
         {
-            Products = new List<Product>()
+            Products = new List<Product>()//need database info in here
             {
                 new Product
                 {
