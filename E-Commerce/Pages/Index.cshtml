@@ -8,3 +8,23 @@
 <p>Model type is @Model.GetType().FullName</p>
 <a asp-page="MyAccount">My Account Page</a>
 
+<h3>Product List</h3>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var product in Model.Products)
+    {
+        <tr align="center">
+            <td>@product.FakeId</td>
+            <td>@product.Name</td>
+            <td>$@product.Price</td>
+            <td>
+                <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a>
+            </td>
+        </tr>
+    }
+</table>
