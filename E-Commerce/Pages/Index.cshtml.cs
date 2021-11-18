@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce.Models;
+using E_Commerce.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,12 +11,18 @@ namespace E_Commerce.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<Product> Products;
-        public void OnGet()
+        private readonly IProductRepository productRepository;
+        public IList<Product> Products { get; set; }
+
+        public IndexModel ( IProductRepository productRepository )
         {
-            ProductsModel productModel = new ProductsModel();
-            Products = productModel.findAll();
-           
+            this.productRepository = productRepository;
+        }
+
+        public async Task OnGetAsync()
+        {
+            //ProductsModel productModel = new ProductsModel();
+            Products = await productRepository.GetAll();           
         }
     }
 }
