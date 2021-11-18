@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.Services
 {
     public interface IProductRepository
     {
-       Task SetProductImage ( string url );
+        Task SetProductImage ( string url );
         Task<List<Product>> GetAll ( );
+        Task<Product> GetOne ( int id );
     }
 
     public class DatabaseProductRepository : IProductRepository
@@ -27,6 +29,12 @@ namespace E_Commerce.Services
         {
             return await _context.Product.ToListAsync();
         }
+        public async Task<Product> GetOne ( int id )
+        {
+            return await _context.Products
+                .Where(p => p.Id == id).FirstOrDefault();
+        }
+
 
         //  public async Task<List<Product>> GetAll ( )
         //  {
@@ -36,7 +44,7 @@ namespace E_Commerce.Services
         // };
         //     return await _context.Product.ToListAsync();
         //}
-         public Task SetProductImage ( string url )
+        public Task SetProductImage ( string url )
            {
                throw new NotImplementedException();
            }
