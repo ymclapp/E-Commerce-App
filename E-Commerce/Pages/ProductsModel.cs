@@ -19,7 +19,7 @@ namespace E_Commerce.Pages
                     Condition = "Good",
                     Price = 20,
                 }
-        }
+            };
         public List<Product> findAll()
         {
             return Product;
