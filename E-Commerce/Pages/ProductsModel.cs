@@ -6,7 +6,7 @@ namespace E_Commerce.Pages
 {
     public class ProductsModel
     {
-        private readonly List<Product> Products;
+        private readonly IList<Product> Products;
 
         public ProductsModel()
         {
@@ -32,7 +32,7 @@ namespace E_Commerce.Pages
                 }
             };
         }
-        public List<Product> findAll()
+        public IList<Product> findAll()
         {
             return Products;
         }

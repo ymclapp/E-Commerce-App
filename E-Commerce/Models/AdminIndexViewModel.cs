@@ -17,7 +17,7 @@ namespace E_Commerce.Models
         //[Display(Name = "Category Name")]
         //public IList<string> ProductCategoryList { get; set; }
         public List<ProductCategory> ProductCategory { get; set; }
-        public List<Product> Product { get; set; }
+        public IList<Product> Product { get; set; }
         //public int ProductCategoryId { get; set; }
 
         //public ProductCategory ProductCategory { get; set; }

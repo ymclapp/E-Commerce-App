@@ -16,6 +16,6 @@ namespace E_Commerce.Models
 
 
         //Reverse navigation property
-        public List<Product> Products { get; set; }
+        public IList<Product> Products { get; set; }
     }
 }
