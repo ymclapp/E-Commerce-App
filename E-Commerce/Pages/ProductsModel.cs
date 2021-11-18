@@ -6,25 +6,25 @@ namespace E_Commerce.Pages
 {
     public class ProductsModel
     {
-        private readonly IList<Product> Products;
+        private readonly IList<DontUse> Products;
 
         public ProductsModel()
         {
-            Products = new List<Product>()//need database info in here
+            Products = new List<DontUse>()//need database info in here
             {
-                new Product
+                new DontUse
                 {
                     FakeId = "db001",
                     Name = "Warrior Heir",
                     Price = 20,
                 },
-                new Product
+                new DontUse
                 {
                     FakeId = "db002",
                     Name = "Wizard Heir",
                     Price = 20,
                 },
-                new Product
+                new DontUse
                 {
                     FakeId = "db003",
                     Name = "Dragon Heir",
@@ -32,11 +32,11 @@ namespace E_Commerce.Pages
                 }
             };
         }
-        public IList<Product> findAll()
+        public IList<DontUse> findAll()
         {
             return Products;
         }
-        public Product find(int id)
+        public DontUse find(int id)
         {
             return Products
                .Where(p => p.Id == id).FirstOrDefault();

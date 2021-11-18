@@ -11,7 +11,7 @@ namespace E_Commerce.Services
     public interface IProductRepository
     {
        Task SetProductImage ( string url );
-        Task<IList<Product>> GetAll ( );
+        Task<List<Product>> GetAll ( );
     }
 
     public class DatabaseProductRepository : IProductRepository
@@ -23,7 +23,7 @@ namespace E_Commerce.Services
            _context = context;
        }
 
-        public async Task<IList<Product>> GetAll ( )
+        public async Task<List<Product>> GetAll ()
         {
             return await _context.Product.ToListAsync();
         }

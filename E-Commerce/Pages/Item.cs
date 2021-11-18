@@ -8,7 +8,7 @@ namespace E_Commerce.Pages
 {
     public class Item
     {
-        public Product product { get; set; }
+        public DontUse product { get; set; }
         public int Quantity { get; set; }
     }
 }
