@@ -29,14 +29,14 @@ namespace E_Commerce.Pages
 
         }
 
-        public IList<Product> findAll ( )
-        {
-            return Products;
-        }
-        public Product find ( int id )
-        {
-            return Products
-               .Where(p => p.Id == id).FirstOrDefault();
-        }
+       // public IList<Product> findAll ( )
+      //  {
+      //      return Products;
+      //  }
+     //   public Product find ( int id )
+     //   {
+     //       return Products
+      //         .Where(p => p.Id == id).FirstOrDefault();
+      //  }
     }
 }

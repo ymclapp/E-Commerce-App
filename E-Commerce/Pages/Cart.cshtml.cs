@@ -6,7 +6,8 @@ using E_Commerce.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using E_Commerce.Models;
-
+using E_Commerce.Data;
+using E_Commerce.Services;
 
 namespace E_Commerce.Pages
 {
@@ -15,12 +16,21 @@ namespace E_Commerce.Pages
         public List<Item> Cart { get; set; }
         public double Total { get; set; }
         public int Id { get; set; }
-        private List<Product> Products { get; set; }
+        //public Product Products { get; set; }
+        //public IList<Product> Products { get; set; }
+
+        public IProductRepository productRepository;
+
+        public CartModel ( IProductRepository productRepository )
+        {
+            this.productRepository = productRepository;
+        }
+
 
         //public CartModel ( IList<Product> products )
         //{
-       //     Products = products;
-       // }
+        //     Products = products;
+        // }
 
         public void OnGet()
         {
@@ -28,16 +38,16 @@ namespace E_Commerce.Pages
             Total = Cart.Sum(i => i.Product.Price * i.Quantity);
         }
 
-        public IActionResult OnGetBuyNow(int id)
+        public async Task<IActionResult> OnGetBuyNow(int id)
         {
-            var products = new Product();
+            var product = new Product();
             Cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Cart");
             if(Cart == null)
             {
                 Cart = new List<Item>();
                 Cart.Add(new Item
                 {
-                    Product = Product.GetOne(id),
+                    Product = await productRepository.GetOne(id),
                     Quantity = 1
                 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "Cart", Cart);
@@ -49,7 +59,7 @@ namespace E_Commerce.Pages
                 {
                     Cart.Add(new Item
                     {
-                        Product = Product.GetOne(id),
+                        Product = await productRepository.GetOne(id),
                         Quantity = 1
                     });
                 }

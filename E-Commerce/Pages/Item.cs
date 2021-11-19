@@ -11,5 +11,6 @@ namespace E_Commerce.Pages
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
+        //public List<Product> Products { get; set; }
     }
 }
