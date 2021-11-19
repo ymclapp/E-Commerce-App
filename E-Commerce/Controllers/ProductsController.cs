@@ -29,7 +29,7 @@ namespace E_Commerce.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var eCommerceDbContext = _context.Product.Include(p => p.ProductCategory);
+            var eCommerceDbContext = _context.Products.Include(p => p.ProductCategory);
             return View(await eCommerceDbContext.ToListAsync());
 
             //ViewBag.products = _context.Product.ToList();
@@ -44,7 +44,7 @@ namespace E_Commerce.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .Include(p => p.ProductCategory)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -103,7 +103,7 @@ namespace E_Commerce.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -165,7 +165,7 @@ namespace E_Commerce.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .Include(p => p.ProductCategory)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -185,15 +185,15 @@ namespace E_Commerce.Controllers
             if (!User.IsInRole("Administrator"))
                 return NotFound();
 
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
+            var product = await _context.Products.FindAsync(id);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Products.Any(e => e.Id == id);
         }
 
         [HttpPost]

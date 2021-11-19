@@ -16,6 +16,7 @@
         <th>Price</th>
         <th>Summary</th>
         <th>Condition</th>
+        <th>Genre</th>
         <th>Action</th>
     </tr>
     @foreach (var product in Model.Products)
@@ -26,6 +27,7 @@
             <td>$@product.Price</td>
             <td>@product.Summary</td>
             <td>@product.Condition</td>
+            <td>@product.ProductCategory</td>
             <td>
                 <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a>
             </td>

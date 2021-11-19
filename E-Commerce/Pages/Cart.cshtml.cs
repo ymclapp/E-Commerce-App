@@ -17,10 +17,10 @@ namespace E_Commerce.Pages
         public int Id { get; set; }
         private IList<Product> Products { get; set; }
 
-        //public CartModel ( Product product )
-        // {
-        //     this.product = product;
-        // }
+        //public CartModel ( IList<Product> products )
+        //{
+       //     Products = products;
+       // }
 
         public void OnGet()
         {
