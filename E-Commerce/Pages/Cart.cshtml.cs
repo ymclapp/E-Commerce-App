@@ -15,7 +15,7 @@ namespace E_Commerce.Pages
         public List<Item> Cart { get; set; }
         public double Total { get; set; }
         public int Id { get; set; }
-        private IList<Product> Products { get; set; }
+        private List<Product> Products { get; set; }
 
         //public CartModel ( IList<Product> products )
         //{

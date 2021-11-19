@@ -32,10 +32,10 @@ namespace E_Commerce.Models
         [Display(Name = "Product Category")]
         public int ProductCategoryId { get; set; }
 
-        //internal static Product GetOne ( int id )
-       // {
-       //     throw new NotImplementedException();
-     //   }
+        internal static Product GetOne ( int id )
+        {
+            throw new NotImplementedException();
+        }
     
         //Navigation Property that makes a ProductCategoryId a Foreign Key
         public ProductCategory ProductCategory { get; set; }
