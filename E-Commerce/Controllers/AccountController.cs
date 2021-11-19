@@ -50,6 +50,31 @@ namespace E_Commerce.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //GET Account/CustomerRegister
+        [HttpGet]
+        public IActionResult CustomerRegister ( )
+        {
+            return View();
+        }
+
+        //POST Account/Register
+        [HttpPost]
+        public async Task<ActionResult<UserDto>> CustomerRegisterAsync ( CustomerData data )
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+            await userService.CustomerRegister(data, this.ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
