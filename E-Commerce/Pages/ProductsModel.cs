@@ -6,25 +6,39 @@ namespace E_Commerce.Pages
 {
     public class ProductsModel
     {
-        private readonly List<Product> Product;
+
+        private readonly IList<DontUse> Products;
 
         public ProductsModel()
         {
-            Product = new List<Product>()//need database info in here
+            Products = new List<DontUse>()//need database info in here
+
             {
-                new Product
+                new DontUse
                 {
-                    Name = Product.Name,
-                    Summary = ProductSummary,
-                    Condition = "Good",
+
+                    FakeId = "db001",
+                    Name = "Warrior Heir",
+                    Price = 20,
+                },
+                new DontUse
+                {
+                    FakeId = "db002",
+                    Name = "Wizard Heir",
+                    Price = 20,
+                },
+                new DontUse
+                {
+                    FakeId = "db003",
+                    Name = "Dragon Heir",
                     Price = 20,
                 }
         }
-        public List<Product> findAll()
+        public IList<DontUse> findAll()
         {
             return Product;
         }
-        public Product find(int id)
+        public DontUse find(int id)
         {
             return Product
                .Where(p => p.Id == id).FirstOrDefault();

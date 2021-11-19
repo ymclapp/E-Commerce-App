@@ -15,29 +15,29 @@ namespace E_Commerce.Pages
         public List<Item> Cart { get; set; }
         public double Total { get; set; }
         public int Id { get; set; }
-        //private Product product { get; set; }
+        private List<Product> Products { get; set; }
 
-        //public CartModel ( Product product )
-       // {
-       //     this.product = product;
+        //public CartModel ( IList<Product> products )
+        //{
+       //     Products = products;
        // }
 
         public void OnGet()
         {
             Cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Cart");
-            Total = Cart.Sum(i => i.product.Price * i.Quantity);
+            Total = Cart.Sum(i => i.Product.Price * i.Quantity);
         }
 
         public IActionResult OnGetBuyNow(int id)
         {
-            var productModel = new ProductsModel();
+            var products = new Product();
             Cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Cart");
             if(Cart == null)
             {
                 Cart = new List<Item>();
                 Cart.Add(new Item
                 {
-                    product = productModel.find(id),
+                    Product = Product.GetOne(id),
                     Quantity = 1
                 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "Cart", Cart);
@@ -49,7 +49,7 @@ namespace E_Commerce.Pages
                 {
                     Cart.Add(new Item
                     {
-                        product = productModel.find(id),
+                        Product = Product.GetOne(id),
                         Quantity = 1
                     });
                 }
@@ -85,7 +85,7 @@ namespace E_Commerce.Pages
         {
             for (var i = 0; i < cart.Count; i++)
             {
-                if (cart[i].product.Id == id)
+                if (cart[i].Product.Id == id)
                 {
                     return i;
                 }

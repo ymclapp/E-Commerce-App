@@ -18,13 +18,15 @@ namespace E_Commerce.Pages
             this.productRepository = productRepository;
         }
 
-        public IList<Product> Products { get; set; }
 
+        public IList<Product> Products { get; set; }
+        
         public async Task OnGetAsync()
         {
             //ProductsModel productModel = new ProductsModel();
-            Products = await productRepository.GetAll();
-           
+
+            Products = await productRepository.GetAll();           
+
         }
 
         public IList<Product> findAll ( )

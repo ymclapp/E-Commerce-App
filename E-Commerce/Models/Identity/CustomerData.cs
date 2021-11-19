@@ -22,10 +22,11 @@ namespace E_Commerce.Models.Identity
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+
+        [Display(Name = "Last Name ")]
         public string LastName { get; set; }
 
-        [Display (Name = "Genre Preferences")]
+        [Display(Name = "Genre Preferences")]
         public string GenreInterest { get; set; }
     }
 }

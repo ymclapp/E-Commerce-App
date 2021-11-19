@@ -99,5 +99,39 @@ namespace E_Commerce.Services.Identity
             var user = await userManager.GetUserAsync(principal);
             return await CreateUserDtoAsync(user);
         }
+
+        public async Task<UserDto> CustomerRegister ( CustomerData data, ModelStateDictionary modelState )
+        {
+            var user = new IdentityUser
+            {
+                Email = data.Email,
+                UserName = data.Username,
+            };
+            var result = await userManager.CreateAsync(user, data.Password);
+
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(user, "Customer");
+                await emailService.SendEmail(
+                    data.Email,
+                    "Welcome!",
+                    "Welcome!",
+                    "<h1>Welcome</h1>"
+                    );
+
+                await signInManager.SignInAsync(user, true);
+                return await CreateUserDtoAsync(user);
+            }
+            foreach (var error in result.Errors)
+            {
+                var errorKey =
+                  error.Code.Contains("Password") ? nameof(data.Password) :
+                  error.Code.Contains("Email") ? nameof(data.Email) :
+                  error.Code.Contains("UserName") ? nameof(data.Username) :
+                  "";
+                modelState.AddModelError(errorKey, error.Description);
+            }
+            return null;
+        }
     }
 }
