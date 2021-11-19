@@ -57,7 +57,7 @@ namespace E_Commerce.Controllers
             return View();
         }
 
-        //POST Account/Register
+        //POST Account/CustomerRegister
         [HttpPost]
         public async Task<ActionResult<UserDto>> CustomerRegisterAsync ( CustomerData data )
         {
