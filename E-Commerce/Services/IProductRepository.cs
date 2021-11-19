@@ -13,7 +13,7 @@ namespace E_Commerce.Services
     {
         Task SetProductImage ( string url );
         Task<List<Product>> GetAll ( );
-        //Task<Product> GetOne ( int id );
+        Task<Product> GetOne ( int id );
     }
 
     public class DatabaseProductRepository : IProductRepository
@@ -29,11 +29,11 @@ namespace E_Commerce.Services
         {
             return await _context.Products.ToListAsync();
         }
-      //  public async Task<Product> GetOne ( int id )
-      //  {
-     //       return await _context.Products
-      //          .Where(p => p.Id == id).FirstOrDefault();
-      //  }
+        public async Task<Product> GetOne ( int id )
+        {
+            return await _context.Products
+                .Where(p => p.Id == id).FirstOrDefaultAsync();
+        }
 
 
         //  public async Task<List<Product>> GetAll ( )
