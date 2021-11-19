@@ -12,5 +12,6 @@ namespace E_Commerce.Services.Identity
         Task<UserDto> GetUser ( ClaimsPrincipal user );
         Task<UserDto> GetCurrentUser ( );
         Task<UserDto> CustomerRegister ( CustomerData data, ModelStateDictionary modelState );
+
     }
 }

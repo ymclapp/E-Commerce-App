@@ -18,6 +18,7 @@ namespace E_Commerce.Pages
         public int ProductId { get; set; }
         public virtual DontUse Product { get; set; }
 
+
         public void OnGet()
         {
         }

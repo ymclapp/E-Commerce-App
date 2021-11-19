@@ -17,12 +17,26 @@ namespace E_Commerce.Pages
         {
             this.productRepository = productRepository;
         }
-    public IList<Product> Products { get; set; }
 
+
+        public IList<Product> Products { get; set; }
+        
         public async Task OnGetAsync()
         {
             //ProductsModel productModel = new ProductsModel();
+
             Products = await productRepository.GetAll();           
+
+        }
+
+        public IList<Product> findAll ( )
+        {
+            return Products;
+        }
+        public Product find ( int id )
+        {
+            return Products
+               .Where(p => p.Id == id).FirstOrDefault();
         }
     }
 }
