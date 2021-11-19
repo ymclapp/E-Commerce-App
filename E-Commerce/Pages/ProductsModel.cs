@@ -9,7 +9,7 @@ namespace E_Commerce.Pages
 
         private readonly IList<DontUse> Products;
 
-        public ProductsModel()
+        public ProductsModel ( )
         {
             Products = new List<DontUse>()//need database info in here
 
@@ -33,15 +33,16 @@ namespace E_Commerce.Pages
                     Name = "Dragon Heir",
                     Price = 20,
                 }
-        }
-        public IList<DontUse> findAll()
-        {
-            return Product;
-        }
-        public DontUse find(int id)
-        {
-            return Product
-               .Where(p => p.Id == id).FirstOrDefault();
+            };
+            // public IList<DontUse> findAll()
+            // {
+            //      return Product;
+            //  }
+            //  public DontUse find(int id)
+            //   {
+            //      return Product
+            //          .Where(p => p.Id == id).FirstOrDefault();
+            //  }
         }
     }
 }
