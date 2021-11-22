@@ -43,6 +43,7 @@
                                     <button type="submit" class="nav-link text-dark btn btn-link border-0">Sign Out</button>
                                 </form>
                             </li>
+
                         }
                         else
                         {
@@ -55,6 +56,20 @@
                         }
                     </ul>
                 </div>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Here" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                     </div>
+                </form>
+                <p class="navbar-text pull-right">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cartTotal">
+                        @*@{Html.RenderAction("CartSummary", "controllerName");}*@
+                    </span>
+                </p>
             </div>
         </nav>
     </header>
