@@ -95,6 +95,15 @@ namespace E_Commerce.Controllers
             return View(data);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout ( )
+        {
+
+            await userService.Logout();
+            return Redirect("/");
+        }
+
         //Can't access this if you are not signed in
         [Authorize]  //can be put on any controller or action
         [HttpGet("[action]")]
