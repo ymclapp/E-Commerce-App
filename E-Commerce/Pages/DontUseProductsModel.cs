@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace E_Commerce.Pages
 {
-    public class ProductsModel
+    public class DontUseProductsModel
     {
 
         private readonly IList<DontUse> Products;
 
-        public ProductsModel ( )
+        public DontUseProductsModel ( )
         {
             Products = new List<DontUse>()//need database info in here
 
