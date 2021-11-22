@@ -1,41 +1,46 @@
 @page
 @model E_Commerce.Pages.CartModel
-    @{
-        Layout = "_Layout";
-    }
+@{
+    Layout = "_Layout";
+}
 
 
-    <h3>Cart</h3>
-    <form method="post" asp-page="cart"asp-page-handler="update">
-        <table border="1">
-            <tr>
-                <th>Action</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity <input type="submit" value="Update" /></th>
-                <th>SubTotal</th>
-            </tr>
-            @foreach (var item in Model.Cart)
-            {
+<h3>Cart</h3>
+<form method="post" asp-page="cart" asp-page-handler="update">
+    <table border="1">
+        <tr>
+            <th>Action</th>
+            <th>Item #</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity <input type="submit" value="Update" /></th>
+            <th>SubTotal</th>
+            <th><input type="submit" value="Checkout" /></th>
+        </tr>
+        @foreach (var item in Model.Cart)
+        {
             <tr align="center">
                 <td align="center">
                     <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id">X</a>
-            </td>
-<td>@item.Product.Id</td>
-<td>@item.Product.Name</td>
-<td>$@item.Product.Price</td>
-<td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
-<td>
-    $@(item.Product.Price * item.Quantity)
-</td>
-        </tr>
+                </td>
+                <td>@item.Product.Id</td>
+                <td>@item.Product.Name</td>
+                <td>$@item.Product.Price</td>
+                <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                <td>
+                    $@(item.Product.Price * item.Quantity)
+                </td>
+            </tr>
         }
-<tr>
-    <td colspan="6" align="right">Total</td>
-    <td align="center">$@Model.Total</td>
-</tr>
+        <tr>
+            <td colspan="6" align="right">Total</td>
+            <td align="center">$@Model.Total</td>
+        </tr>
     </table>
 </form>
 <a asp-page="index">Continue Shopping</a>
+<br />
+<br />
+@*<a asp-page="checkout">Checkout</a>*@
 
 

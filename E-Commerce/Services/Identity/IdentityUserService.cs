@@ -133,5 +133,9 @@ namespace E_Commerce.Services.Identity
             }
             return null;
         }
+        public async Task Logout()
+        {
+            await signInManager.SignOutAsync();
+        }
     }
 }

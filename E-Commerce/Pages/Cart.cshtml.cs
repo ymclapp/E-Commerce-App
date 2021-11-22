@@ -102,5 +102,11 @@ namespace E_Commerce.Pages
             }
             return -1;
         }
+
+       // public ActionResult CartSummary ( )
+      //  {
+      //      ViewData["CartCount"] = 3; // count Qty in your cart
+      //      return PartialView("CartSummary");
+      //  }
     }
 }

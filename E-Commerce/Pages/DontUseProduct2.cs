@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Pages
 {
-    public class Product2
+    public class DontUseProduct2
     {
         public int Id { get; set; }
         public string Name { get; set; }
