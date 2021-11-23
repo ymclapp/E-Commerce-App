@@ -24,11 +24,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @if(User.IsInRole("Administrator"))
-                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Dashboard</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Cart.Count">Cart</a>
                         </li>
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Dashboard</a>
+                            </li>
                         }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
@@ -50,6 +54,20 @@
                         }
                     </ul>
                 </div>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Here" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </form>
+                <p class="navbar-text pull-right">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cartTotal">
+                        @*@{Html.RenderAction("CartSummary", "Cart");}*@
+                    </span>
+                </p>
             </div>
         </nav>
     </header>
