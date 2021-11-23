@@ -70,8 +70,8 @@ namespace E_Commerce.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductImage,ProductCategoryId")] Product product, IFormFile productImage)
         {
             if (!User.IsInRole("Administrator"))
