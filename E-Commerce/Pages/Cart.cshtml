@@ -1,4 +1,4 @@
-@page
+@page 
 @model E_Commerce.Pages.CartModel
 @{
     Layout = "_Layout";
@@ -25,13 +25,12 @@
             <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id">X</a>
         </td>
         <td>@item.Product.Id</td>
-        @*<td>
-            @if(!string.IsNullOrEmpty(Model.Products.ProductUrl))
-        {
-            <img src="@Model.Products.ProductUrl"/>
-        }
-        </td>*@
-        <td>@item.Product.ProductUrl</td>
+        <td>
+            <span class="productImage">
+                <img src="@item.Product.ProductUrl" />
+            </span>
+        </td>
+        @*<td>@item.Product.ProductUrl</td>*@
         <td>@item.Product.Name</td>
         <td>$@item.Product.Price</td>
         <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>

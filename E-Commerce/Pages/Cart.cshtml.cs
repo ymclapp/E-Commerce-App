@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using E_Commerce.Models;
 using E_Commerce.Data;
 using E_Commerce.Services;
+using E_Commerce.Models.Identity;
+using System.Security.Claims;
+using E_Commerce.Services.Identity;
 
 namespace E_Commerce.Pages
 {
@@ -18,12 +21,15 @@ namespace E_Commerce.Pages
         public int Id { get; set; }
         public Product Products { get; set; }
         //public IList<Product> Products { get; set; }
+     //   Task<UserDto> GetUser ( ClaimsPrincipal user );
 
         public IProductRepository productRepository;
+        //IUserService userService;
 
         public CartModel ( IProductRepository productRepository )
         {
             this.productRepository = productRepository;
+          
         }
 
 
@@ -102,11 +108,18 @@ namespace E_Commerce.Pages
             }
             return -1;
         }
+       // public async Task<int>GetCartQuantity()
+    //    {
+     //       var user = await userService.GetUser(UserClaimsPrincipal);
+     //       var cartQuantity = await
+     //           _context.CartItems
+      //          .Where(cq =>
+     //           cq.UserId == userId)
+     //           .SumAsync(cq =>
+     //           cq.Quantity);
 
-       // public ActionResult CartSummary ( )
-      //  {
-      //      ViewData["CartCount"] = 3; // count Qty in your cart
-      //      return PartialView("CartSummary");
-      //  }
+   //         return cartQuantity;
+   //     }
+
     }
 }
