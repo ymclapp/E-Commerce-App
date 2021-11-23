@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\Cart\" />
     <Folder Include="Pages\Components\Cart\" />
   </ItemGroup>
 
