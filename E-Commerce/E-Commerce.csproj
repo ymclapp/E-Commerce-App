@@ -24,4 +24,8 @@
     <Folder Include="Pages\Components\Cart\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\images\person-holds-a-book-over-a-stack-and-turns-the-page.jpg" />
+  </ItemGroup>
+
 </Project>
