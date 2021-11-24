@@ -7,12 +7,6 @@
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:DefaultConnection",
       "secretStore": "LocalSecretsFile"
-    },
-    "storage1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/ecommerce401",
-      "type": "storage.azure",
-      "connectionId": "AzureStorageAccountName",
-      "secretStore": "LocalSecretsFile"
     }
   }
 }
