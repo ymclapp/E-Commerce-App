@@ -116,7 +116,7 @@ namespace E_Commerce.Services.Identity
                     data.Email,
                     "Welcome!",
                     "Welcome!",
-                    "<h1>Welcome</h1>"
+                    "<h1>Thank you for choosing our site for your product needs!</h1>"
                     );
 
                 await signInManager.SignInAsync(user, true);

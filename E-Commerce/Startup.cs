@@ -62,6 +62,7 @@ namespace E_Commerce
                 builder.AddBlobServiceClient(Configuration["AzureStorageAccountName:blob"], preferMsi: true);
                 builder.AddQueueServiceClient(Configuration["AzureStorageAccountName:queue"], preferMsi: true);
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
