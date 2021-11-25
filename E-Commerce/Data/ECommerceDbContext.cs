@@ -40,5 +40,6 @@ namespace E_Commerce.Data
             };
             builder.Entity<IdentityRole>().HasData(role);
         }
+
     }
 }
