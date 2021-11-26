@@ -5,14 +5,39 @@
 }
 
 <h1>Welcome to your account page, @Model.User.Identity.Name!</h1>
-
-<h3>Here are some items especially curated for you:</h3>
-
-
-
-<a asp-page="Search">Search For Books</a>
-<a href="/">Home</a>
-
 <h2>Components!</h2>
 @*@await Component.InvokeAsync("UserInfo")*@
 <vc:user-info />
+
+@*<h3>Here are some items especially curated for you:</h3>
+
+    <a asp-page="Search">Search For Books</a>
+    <a href="/">Home</a>*@
+
+<h3>Product List</h3>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm">Id</div>
+        <div class="col-xl">Name</div>
+        <div class="col-sm">Price</div>
+        <div class="col-xl">Summary</div>
+        <div class="col-sm">Condition</div>
+        <div class="col-sm">Genre</div>
+        <div class="col-md">Action</div>
+        <div class="w-100"></div>
+
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-sm">@product.Id</div>
+            <div class="col-xl">@product.Name</div>
+            <div class="col-sm">$@product.Price</div>
+            <div class="col-xl">@product.Summary</div>
+            <div class="col-sm">@product.Condition</div>
+            <div class="col-sm">@product.ProductCategoryId</div>
+            <div class="col-md"><a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a></div>
+            <div class="w-100"></div>
+        }
+    </div>
+</div>
+
+
