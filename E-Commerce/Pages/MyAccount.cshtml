@@ -4,20 +4,20 @@
     Layout = "_Layout";
 }
 
-<h1>Welcome to your account page, @Model.User.Identity.Name!</h1>
-<h2>Components!</h2>
-@*@await Component.InvokeAsync("UserInfo")*@
-<vc:user-info />
-
-@*<h3>Here are some items especially curated for you:</h3>
-
-    <a asp-page="Search">Search For Books</a>
-    <a href="/">Home</a>*@
-
-<h1>My Account Page</h1>
 @if (User.Identity.IsAuthenticated)
 {
-    @User.Identity.Name
+    <h1>Welcome to your account page, @User.Identity.Name!</h1>
+
+    <h2>Components!</h2>
+    @*@await Component.InvokeAsync("UserInfo")*@
+    <vc:user-info />
+
+    @*<h3>Here are some items especially curated for you:</h3>
+
+        <a asp-page="Search">Search For Books</a>
+        <a href="/">Home</a>*@
+
+
 
     <h3>Product List</h3>
     <div class="container">
