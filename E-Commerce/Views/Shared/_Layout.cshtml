@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - E_Commerce</title>
+    <title>@ViewData["Title"] -Views-Your Store!</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,27 +25,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart">Cart</a>
-                        </li>
-                        @if (User.IsInRole("Administrator"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Dashboard</a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                        </li>
+
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">My Account Page</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MyAccount">My Account Page</a>
                             </li>
                             <li class="nav-item">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout">
                                     <button type="submit" class="nav-link text-dark btn btn-link border-0">Sign Out</button>
                                 </form>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart">Cart</a>
                             </li>
 
                         }
@@ -58,6 +51,21 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login Now</a>
                             </li>
                         }
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Admin" asp-action="Index">Admin Dashboard</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <a class="dropdown-item" href="Products">Products</a>
+                                    <a class="dropdown-item" href="ProductCategories">Categories</a>
+                                    <a class="dropdown-item" href="Register">Add Admin</a>
+                                </div>
+                            </li>
+                        }
+                        @*<li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                </li>*@
                     </ul>
                 </div>
                 <form class="navbar-form navbar-left" role="search">
@@ -66,14 +74,15 @@
                         <span class="input-group-addon">
                             @*<i class="fa fa-search"></i>*@
                         </span>
-                     </div>
+                    </div>
                 </form>
-                <p class="navbar-text pull-right">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span id="cartTotal">
-                        @*@{Html.RenderAction("CartSummary", "controllerName");}*@
-                    </span>
-                </p>
+                <a href="myaccount"><img border="0" alt="MyAccount" src="~/lib/images/profileAvatar.png" width="50" height="50" /></a>
+                @*<p class="navbar-text pull-right">
+        <i class="fa fa-shopping-cart"></i>
+        <span id="cartTotal">
+            @{Html.RenderAction("CartSummary", "controllerName");}
+            </span>
+            </p>*@
             </div>
         </nav>
     </header>
@@ -86,7 +95,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - E_Commerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> |
-            <a href="http://www.facebook.com#" class="fa fa-facebook"></a> | <a href="#" class="fa fa-twitter"></a> | <a href="#" class="fa fa-linkedin"></a> | <a href="#" class="fa fa-instagram"></a> | <a href="admin"><img border="0" alt="AdminOnly" src="~/lib/images/AdminIcon.jpeg" width="50" height="50" /></a>
+            <a href="http://www.facebook.com#" class="fa fa-facebook"></a> | <a href="#" class="fa fa-twitter"></a> | <a href="#" class="fa fa-linkedin"></a> | <a href="#" class="fa fa-instagram"></a> | <a href="admin"><img border="0" alt="AdminOnly" src="~/lib/images/AdminIcon.jpeg" width="50" height="50" /></a> | Profile icon made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
