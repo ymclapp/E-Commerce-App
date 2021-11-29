@@ -2,52 +2,8 @@
 @{
     ViewData["Title"] = "My Account Page";
 }
-<h1>My Account Page</h1>
-@if (User.Identity.IsAuthenticated)
-{
-    @User.Identity.Name
 
-    <h3>Product List</h3>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm">Id</div>
-            <div class="col-xl">Name</div>
-            <div class="col-sm">Price</div>
-            <div class="col-xl">Summary</div>
-            <div class="col-sm">Condition</div>
-            <div class="col-sm">Genre</div>
-            <div class="col-md">Action</div>
-            <div class="w-100"></div>
-
-            <ul>
-                @foreach (var product in Model.Products)
-                {
-                    @*<div class="col-sm">@product.Id</div>
-            <div class="col-xl">@product.Name</div>
-            <div class="col-sm">$@product.Price</div>
-            <div class="col-xl">@product.Summary</div>
-            <div class="col-sm">@product.Condition</div>
-            <div class="col-sm">@product.ProductCategoryId</div>*@
-
-                    <li>
-                        <a asp-controller="ProductCategories" asp-action="Details" asp-route-id="@product.Id">
-                            @product.Name
-                        </a>
-                    </li>
-
-                    @*  <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a>*@
-                    @* <div class="w-100"></div>*@
-                }
-            </ul>
-            </div>
-    </div>
-}
-else
-{
-    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-}
-
-@*for a search use example (need to know how to parse and add + between each word):  https://www.goodreads.com/search?q=[searchstring]&qid=*@
+What is telling it to come to this page?  It needs to go to MyAccount
 
 
 
