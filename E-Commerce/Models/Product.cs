@@ -32,6 +32,11 @@ namespace E_Commerce.Models
         [Display(Name = "Product Category")]
         public int ProductCategoryId { get; set; }
 
+        [StringLength(200)]
+        public string Author { get; set; }
+
+        public string Series { get; set; }
+
     
         //Navigation Property that makes a ProductCategoryId a Foreign Key
         public ProductCategory ProductCategory { get; set; }

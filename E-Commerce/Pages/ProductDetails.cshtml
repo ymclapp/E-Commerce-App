@@ -28,8 +28,8 @@
             <div class="col-lg">@product.Summary</div>
             <div class="col-sm">@product.Condition</div>
             <div class="col-sm">@product.ProductCategoryId</div>
-            @*<div class="col-sm">@product.ProductCategoryId</div>this needs to be a link to goodreads using the book title in the search query*@
-            <button class="btn btn-success" onclick=" window.open('https://www.goodreads.com/search?q=warrior+heir&qid=','_blank')">Review</button> @*take out hard coded title*@
+
+            <button class="btn btn-success" onclick=" window.open('https://www.goodreads.com/search?q=@product.Name&qid=','_blank')">Review</button> @*take out hard coded title*@
             <button class="btn btn-dark" onclick=" window.open('https://www.goodreads.com/search?q=heir+chronicles&qid=','_blank')">Series</button>@*take out hard coded series*@
             <button class="btn btn-light" onclick=" window.open('https://www.goodreads.com/search?q=cinda+williams+chima&qid=','_blank')">More Roberts</button>@*take out hard coded author*@
             <button class="btn btn-primary" onclick=" window.open('https://www.similarauthors.com/search.php?author=nora+roberts','_blank')">Similar Authors</button>@*take out hard coded author*@
