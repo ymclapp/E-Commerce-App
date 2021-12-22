@@ -89,7 +89,7 @@ namespace E_Commerce.Controllers
 
             if (user != null)
             {
-                return RedirectToAction(nameof(Index));
+                return Redirect("/MyAccount");
             }
             ModelState.AddModelError(nameof(LoginData.Password), "Email or Password was incorrect.");
             return View(data);
