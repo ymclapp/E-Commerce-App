@@ -72,7 +72,7 @@ namespace E_Commerce.Controllers
         [HttpPost]
         //[ValidateAntiForgeryToken]
         //[Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductImage,ProductCategoryId")] Product product, IFormFile productImage)
+        public async Task<IActionResult> Create([Bind("Id,Name,Author,Price,InventoryAmount,Summary,Condition,Series,ProductImage,ProductCategoryId")] Product product, IFormFile productImage)
         {
             if (!User.IsInRole("Administrator"))
                 return NotFound();
@@ -118,7 +118,7 @@ namespace E_Commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Editor")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,InventoryAmount,Summary,Condition,ProductCategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Author,Price,InventoryAmount,Summary,Condition,Series,ProductCategoryId")] Product product)
         {
 
             if (!User.IsInRole("Editor"))
