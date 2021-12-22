@@ -4,38 +4,39 @@
 }
 <h3>Product Details</h3>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-lg-start">
         <div class="col-sm">Id</div>
         <div class="col-sm">Name</div>
         <div class="col-sm">Author</div>
-        <div class="col-sm">Price</div>
-        <div class="col-lg">Summary</div>
-        <div class="col-sm">Condition</div>
-        <div class="col-sm">Genre</div>
-        <div class="col-lg">Goodreads to see reviews</div>
-        <div class="col-xl">Part of a Series?</div>
-        <div class="col-xl">Other Books by This Author</div>
-        <div class="col-xl">Similar Authors</div>
-        <div class="col-xl">Action</div>
-        <div class="w-100"></div>
+            <div class="col-sm">Price</div>
+            <div class="col-xl-auto">Summary</div>
+            <div class="col-sm">Condition</div>
+            <div class="col-sm">Genre</div>
+                <div class="col-lg">Goodreads to see reviews</div>
+                <div class="col-xl">Part of a Series?</div>
+                <div class="col-xl">Other Books by This Author</div>
+                <div class="col-xl">Similar Authors</div>
+                <div class="col-xl">Action</div>
+                <div class="w-100"></div>
 
-        @foreach (var product in Model.Products)
-        {
-            <div class="col-sm">@product.Id</div>
-            <div class="col-sm">@product.Name</div>
-            <div class="col-sm">Author TBD</div>
-            <div class="col-sm">$@product.Price</div>
-            <div class="col-lg">@product.Summary</div>
-            <div class="col-sm">@product.Condition</div>
-            <div class="col-sm">@product.ProductCategoryId</div>
+                @foreach (var product in Model.Products)
+                {
+                    <div class="col-sm">@product.Id</div>
+                    <div class="col-sm">@product.Name</div>
+                    <div class="col-sm">@product.Author</div>
+                    <div class="col-sm">$@product.Price</div>
+                    <div class="col-xl-auto">@product.Summary</div>
+                    <div class="col-sm">@product.Condition</div>
+                    <div class="col-sm">@product.ProductCategoryId</div>
+                    <div class="col-sm">@product.Series</div>
 
-            <button class="btn btn-success" onclick=" window.open('https://www.goodreads.com/search?q=@product.Name&qid=','_blank')">Review</button> @*take out hard coded title*@
-            <button class="btn btn-dark" onclick=" window.open('https://www.goodreads.com/search?q=heir+chronicles&qid=','_blank')">Series</button>@*take out hard coded series*@
-            <button class="btn btn-light" onclick=" window.open('https://www.goodreads.com/search?q=cinda+williams+chima&qid=','_blank')">More Roberts</button>@*take out hard coded author*@
-            <button class="btn btn-primary" onclick=" window.open('https://www.similarauthors.com/search.php?author=nora+roberts','_blank')">Similar Authors</button>@*take out hard coded author*@
-            <div class="col-md"><a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a></div>
-            <div class="w-100"></div>
-        }
-    </div>
-</div>
+                    <button class="btn btn-success" onclick=" window.open('https://www.goodreads.com/search?q=@product.Name&qid=','_blank')">Review</button> @*take out hard coded title*@
+                    <button class="btn btn-dark" onclick=" window.open('https://www.goodreads.com/search?q=@product.Series&qid=','_blank')">Series</button>@*take out hard coded series*@
+                    <button class="btn btn-light" onclick=" window.open('https://www.goodreads.com/search?q=@product.Author&qid=','_blank')">More by @product.Author</button>@*take out hard coded author*@
+                    <button class="btn btn-primary" onclick=" window.open('https://www.similarauthors.com/search.php?author=@product.Author','_blank')">Similar Authors</button>@*take out hard coded author*@
+                    <div class="col-md"><a asp-page="cart" asp-page-handler="buynow" asp-route-id="@product.Id">Add to Cart</a></div>
+                    <div class="w-100"></div>
+                }
+            </div>
+        </div>
 <p><a class="btn btn-secondary btn-lg btn-block" href="MyAccount" role="button">Continue Shopping</a></p>
