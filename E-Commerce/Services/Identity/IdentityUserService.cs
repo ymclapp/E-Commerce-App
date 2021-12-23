@@ -20,7 +20,7 @@ namespace E_Commerce.Services.Identity
         private readonly IEmailService emailService;
 
 
-        public IdentityUserService ( SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IEmailService emailService )
+        public IdentityUserService ( SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IEmailService emailService)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
